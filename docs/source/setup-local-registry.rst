@@ -1,6 +1,9 @@
 Setup local-registry
 ====
 
+``local-registry.yaml``
+----
+
 Create local-registry manifest named ``local-registry.yaml``::
 
   apiVersion: v1
@@ -80,6 +83,9 @@ Create local-registry manifest named ``local-registry.yaml``::
     ports:
       - port: 5000
         targetPort: 5000
+
+``local-registry.sh``
+----
 
 Examine install script ``local-registry.sh``::
 
