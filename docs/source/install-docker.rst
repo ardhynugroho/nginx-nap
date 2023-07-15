@@ -1,6 +1,9 @@
 Install docker
 ====
 
+.. note::
+  This already installed for lab. hands-on session, and you can skip this step.
+
 Change directory to ``setup``::
   
   cd ~/setup
