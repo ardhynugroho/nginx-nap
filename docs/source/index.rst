@@ -1,3 +1,13 @@
+.. toctree::
+    lab-setup
+    install-docker
+    install-k3s
+    install-nic
+    deploy-arcadia-app
+    deploy-waf-policy
+    security-test
+    deploy-local-registry
+
 Topology
 ====
 
