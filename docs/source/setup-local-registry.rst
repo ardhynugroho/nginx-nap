@@ -1,7 +1,7 @@
 Setup local-registry
 ====
 
-1. Create local-registry manifest named ``local-registry.yaml``::
+Create local-registry manifest named ``local-registry.yaml``::
 
   apiVersion: v1
   kind: PersistentVolume
@@ -81,7 +81,7 @@ Setup local-registry
       - port: 5000
         targetPort: 5000
 
-#. Examine install script ``local-registry.sh``::
+Examine install script ``local-registry.sh``::
 
   #!/bin/bash
   #
@@ -135,6 +135,6 @@ Setup local-registry
   docker login local-registry:5000 -u myuser -p mypasswd
   echo "Local-registry setup, done!"
 
-#. Apply above script::
+Apply above script::
 
   bash local-registry.sh
