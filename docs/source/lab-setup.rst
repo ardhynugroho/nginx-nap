@@ -6,6 +6,12 @@ Topology
 
 .. image:: img/topologi.jpeg
 
+*Client* node will be used as jump host and test client. 
+It uses RDP protocol to access.
+
+*App* node is where the test application will be hosted.
+The test app is micro-services based hence *k3s* cluster installed in this node.
+
 Your Deployment
 ----
 
@@ -15,8 +21,10 @@ Click the button to see access option to this node.
 
 .. image:: img/deployment.png
 
-Reset ubuntu Password
+Reset *ubuntu* User Password
 ----
+
+Now we will change *ubuntu* user password as *ubuntu*
 
 In your deployment, from *APP* node select *ACCESS > Web Shell*
 
@@ -35,16 +43,16 @@ Everything will be done over remote desktop.
 This method protects from losing session when network disconnect happen.
 You will need a RDP client installed in your laptop / PC.
 
-In your deployment, from *Client* node select *ACCESS > xRDP > 1280x800*
-Then click on downloaded RDP file to open in RDP client.
+In your deployment, from *Client* node select *ACCESS > xRDP > 1280x800*.
 
 .. image:: img/xrdp.png
 
-Enter credential *ubuntu/ubuntu* to login
+Then click on downloaded RDP file to open in RDP client.
+Enter credential *ubuntu/ubuntu* to login.
 
 .. image:: img/xrdp2.png
 
-After login, open *Terminal Emulator* from dock menu
+After login, open *Terminal Emulator* from dock menu.
 
 .. image:: img/dock-menu.png
 
