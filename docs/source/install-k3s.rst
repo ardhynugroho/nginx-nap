@@ -34,4 +34,4 @@ Examine install script `k3s.sh`::
   
   echo "Done"
 
-Verify with `kubectl get nodes`.
+Verify with ``kubectl get nodes``.
