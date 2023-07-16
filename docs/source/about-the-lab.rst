@@ -13,7 +13,7 @@ Topology
   This is where we will deploy *Arcadia Apps* and *NGINX Plus Ingress Controller*.
   The **Arcadia Apps** is micro-services based hence *k3s* cluster need to be installed in this node.
 
-KIC
+NGINX IC
   Kubernetes Ingress Controller using *NGINX Plus Ingress Controller* with *App. Protect* enabled
 
 Main
@@ -30,6 +30,9 @@ App3
 
 Local-registry
   Docker registry running on local kubernetes cluster
+
+Syslog
+  Will be used to collect App. Protect logs
 
 Docker
   Self-explained
