@@ -16,7 +16,15 @@ Change directory to ``setup``::
 The *Docker* Install Script
 ----
 
-The `docker.sh` install script::
+Steps:
+
+1. Add *docker* apt repository
+
+#. Install *docker* packages for ubuntu
+
+#. Add *ubuntu* user to *docker* group
+
+::
 
   #!/bin/bash
   set -x
@@ -33,14 +41,14 @@ The `docker.sh` install script::
   sudo addgroup ubuntu docker
   sudo su ubuntu
 
-Then execute the script:: 
+Let's execute the script:: 
   
   $ bash docker.sh
 
 Verify The Installation
 ----
 
-Run a *NGINX* container::
+After package installation finished, let's try to run a *NGINX* container::
 
   $ docker run --name nginx nginx
   Unable to find image 'nginx:latest' locally
@@ -49,12 +57,16 @@ Run a *NGINX* container::
   ...
   [ctl-C]
 
-You can terminate using [ctl-C] key.
+Press [ctl-C] key to terminate the container.
 
 Show terminated *nginx* container::
 
   $ docker ps -a
   CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS                      PORTS     NAMES
   f0d3a264afdb   nginx     "/docker-entrypoint.…"   About a minute ago   Exited (0) 59 seconds ago             nginx
+
+You can remove terminated *nginx* container for cleanup::
+
+  $ docker rm nginx
 
 In this point, docker is ready.

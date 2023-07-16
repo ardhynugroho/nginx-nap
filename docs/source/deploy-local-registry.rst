@@ -23,7 +23,7 @@ Persistent volume & claim
 Service
   To publish the *local-registry* service.
 
-Create local-registry manifest named ``local-registry.yaml``::
+Take a look at ``/home/ubuntu/setup/local-registry.yaml`` file::
 
   apiVersion: v1
   kind: PersistentVolume
@@ -106,7 +106,7 @@ Create local-registry manifest named ``local-registry.yaml``::
 Deployment script
 ----
 
-Steps:
+Steps executed in this script:
 
 1. Generate TLS certificate and *htpasswd* file
 
@@ -118,7 +118,7 @@ Steps:
 
 #. Setup K3s to use the *local-registry*
 
-Examine deployment script ``local-registry.sh`` below::
+This is ``/home/ubuntu/setup/local-registry.sh`` script look like::
 
   #!/bin/bash
   #

@@ -1,21 +1,21 @@
 Deploy Nginx Plus Ingress Controller
 ====
 
-Prerequisite
+.. note::
+  This already deployed for lab. hands-on session. You can skip this step.
+  
+About NGINX Private Registry Access
 ----
 
-You will need valid *NGINX* private registry certificate to be able to access *NGINX Plus* software images.
+You will need valid *NGINX* private registry SSL certificate and private key to be able to access *NGINX Plus* software images.
 
 To obtain required files, log in to MyF5 Customer Portal and download your trial SSL certificate & private key.
 
 .. image:: img/download-certs.png
 
-Copy & paste downloaded certificate & private key earlier as
-``nginx-repo.crt`` and ``nginx-repo.key`` to ``/home/ubuntu/setup`` directory inside *APP* node.
+Downloade the SSL certificate & private key and save it in *APP* node as
+``nginx-repo.crt`` and ``nginx-repo.key`` file inside ``/home/ubuntu/setup`` directory.
 
-.. note::
-  This already deployed for lab. hands-on session. You can skip this step.
-  
 .. warning::
   Make sure you're login to *APP* node.
 
@@ -26,9 +26,9 @@ The script summarize install steps:
 
 1. Pull images from NGINX private repo and push them to our *local-registry*
 
-#. Clone *kubernetes-ingress* from *NGINX* Git repository <https://github.com/nginxinc/kubernetes-ingress.git>_
+#. Clone *kubernetes-ingress* from `*NGINX* Git repository <https://github.com/nginxinc/kubernetes-ingress.git>`_
 
-#. Deploy the manifests (namespaces, service account, RBAC, CRDs)
+#. Deploy the manifests (namespace, service account, RBAC, CRDs)
 
 #. Patching service account *imagePullSecrets*
 
@@ -94,7 +94,7 @@ Take a look at the ``nic.sh`` deployment script below::
     echo "Required nginx-repo.crt and/or nginx-repo.key files not found"
   fi
 
-Execute the script::
+Now, let's execute the script::
 
   $ bash nic.sh
 

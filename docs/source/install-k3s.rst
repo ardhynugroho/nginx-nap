@@ -20,7 +20,7 @@ Make it persistent across restart::
 
   # echo "app" > /etc/hostname
 
-The K3s Install Script
+The *K3s* Install Script
 ----
 
 This script will install *k3s* and then remove default *ingress controller*.
@@ -55,7 +55,7 @@ Execute the install script::
 
   $ bash k3s.sh
 
-Verify *k3s* Installation
+Verify *K3s* Installation
 ----
 
 After script execution finished, verify the cluster::

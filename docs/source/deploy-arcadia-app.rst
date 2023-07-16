@@ -11,15 +11,15 @@ This is the architecture of Arcadia apps. It has 4 micro-services and they're ro
 
 .. image:: img/arcadia-arch.png
 
-This is what it's look like when only main and backend app deployed.
+This is what displayed when only *main* and *backend* app deployed.
 
 .. image:: img/arcadia-main-be.png
 
-This is what displayed when main, backend and money transfer deployed.
+This is what displayed when *main*, *backend* and *money transfer* deployed.
 
 .. image:: img/arcadia-main-be-money.png
 
-This is what displayed when main, backend, money transfer and referral deployed.
+This is what displayed when *main*, *backend*, *money transfer* and *referral* deployed.
 
 .. image:: img/arcadia-main-be-money-friend.png
 
@@ -33,7 +33,7 @@ Deploy The Apps In Kubernetes
 .. warning::
   You should be login in *APP* node
 
-Enter arcadia directory::
+Enter ``arcadia`` directory::
 
   $ cd /home/ubuntu/arcadia
 
@@ -244,11 +244,12 @@ Examine app deployment file ``app.yaml`` below::
           - containerPort: 80
             protocol: TCP
 
-Apply the manifest above::
+Let's apply the ``app.yaml`` manifest above::
 
   $ kubectl apply -f app.yaml
 
-Verify the deployment, as you can see there are *main-, backend-, app2-* and *app-3* pods and their services::
+Verify the deployment, as you can see there are *main-*, *backend-*, *app2-* 
+and *app-3* pods are running and their respective service are defined::
 
   $ kubectl get pods,svc
   NAME                           READY   STATUS    RESTARTS        AGE
@@ -273,7 +274,7 @@ Verify the Arcadia apps
 ----
 
 .. warning::
-  You should do this from *Client* node
+  Do this from *Client* node
 
 At this point, you should can access the app using exposed NodePort.
 From *Client* node, open Firefox web browser and navigate to::
@@ -288,7 +289,7 @@ Publish the Arcadia App Using *NGINX Plus Ingress Controller*
 ----
 
 .. warning::
-  Location: *APP* node
+  Do this from *APP* node
 
 From ``/home/ubuntu/arcadia`` directory, there is ``vs-1.yaml`` manifest file with below content::
 
@@ -318,7 +319,7 @@ Now apply ``vs-1.yaml`` manifest from ``/home/ubuntu/arcadia`` directory::
   $ kubectl apply -f vs-1.yaml
 
 .. warning::
-  Location: *Client* node
+  Go back to *Client* node
 
 Verify the Arcadia App by open ``http://app.arcadia.com/`` in the Firefox web browser.
 
