@@ -23,7 +23,7 @@ This is main, backend, money transfer and referral deployed.
 
 .. image:: img/arcadia-main-be-money-friend.png
 
-Deploy in kubernetes
+Deploy the apps in kubernetes
 ----
 
 .. note::
@@ -253,27 +253,27 @@ Verify the deployment, as you can see there are *main-, backend-, app2-* and *ap
 
   $ kubectl get pods,svc
   NAME                           READY   STATUS    RESTARTS        AGE
-  **pod/app2-6999bc5c98-lfbzj      1/1     Running   2 (4h26m ago)   39h**
+  pod/app2-6999bc5c98-lfbzj      1/1     Running   2 (4h26m ago)   39h
   pod/syslog-56d66bfffc-ftql6    1/1     Running   2 (4h26m ago)   38h
   pod/local-registry             1/1     Running   3 (4h26m ago)   39h
-  **pod/main-66767686d9-xw9br      1/1     Running   2 (4h26m ago)   39h**
-  **pod/backend-78c5979444-9k7rf   1/1     Running   2 (4h26m ago)   39h**
-  **pod/app3-554b8c45d5-8mlsv      1/1     Running   2 (4h26m ago)   39h**
+  pod/main-66767686d9-xw9br      1/1     Running   2 (4h26m ago)   39h
+  pod/backend-78c5979444-9k7rf   1/1     Running   2 (4h26m ago)   39h
+  pod/app3-554b8c45d5-8mlsv      1/1     Running   2 (4h26m ago)   39h
   
   NAME                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
   service/kubernetes       ClusterIP   10.43.0.1       <none>        443/TCP        39h
   service/local-registry   ClusterIP   10.43.3.5       <none>        5000/TCP       39h
   service/backend          NodePort    10.43.248.112   <none>        80:31584/TCP   39h
-  **service/main             NodePort    10.43.136.176   <none>        80:30511/TCP   39h**
-  **service/app2             NodePort    10.43.66.125    <none>        80:30362/TCP   39h**
-  **service/app3             NodePort    10.43.61.157    <none>        80:31662/TCP   39h**
-  **service/syslog-svc       ClusterIP   10.43.206.48    <none>        514/TCP        38h**
+  service/main             NodePort    10.43.136.176   <none>        80:30511/TCP   39h
+  service/app2             NodePort    10.43.66.125    <none>        80:30362/TCP   39h
+  service/app3             NodePort    10.43.61.157    <none>        80:31662/TCP   39h
+  service/syslog-svc       ClusterIP   10.43.206.48    <none>        514/TCP        38h
 
 .. _verifyArcadia:
 Verify the Arcadia apps
 ----
 
-At this point, you can access the app using exposed NodePort.
+At this point, you should can access the app using exposed NodePort.
 From *Client* node, open Firefox web browser and navigate to::
 
   http://app.arcadia.com:30511/
@@ -281,3 +281,37 @@ From *Client* node, open Firefox web browser and navigate to::
 You should see the app is running.
 
 .. image:: img/arcadia-nodeport.png
+
+Publish the Arcadia App Using *NGINX Plus Ingress Controller*
+----
+
+Still from ``arcadia`` directory, there is ``vs-1.yaml`` manifest file::
+
+  apiVersion: k8s.nginx.org/v1
+  kind: VirtualServer
+  metadata:
+    name: vs-arcadia
+  spec:
+    host: app.arcadia.com
+    upstreams:
+    - name: main
+      service: main
+      port: 80
+    - name: backend
+      service: backend
+      port: 80
+    routes:
+    - path: /
+      action:
+        pass: main
+    - path: /files
+      action:
+        pass: backend
+
+Apply ``vs-1.yaml`` manifest::
+
+  $ kubectl apply -f vs-1.yaml
+
+Verify the Arcadia App by open ``http://app.arcadia.com/`` in the Firefox web browser.
+
+At this point. The Arcadia app is up and running served by *NGINX Plus Ingress Controller*
