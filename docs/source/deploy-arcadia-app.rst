@@ -24,10 +24,11 @@ This is main, backend, money transfer and referral deployed.
 .. image:: img/arcadia-main-be-money-friend.png
 
 Deploy in kubernetes
----
+----
 
 .. note::
   For the interrest of time, the apps is already deployed.
+  You can moving forward to :ref:`verifyArcadia` step.
 
 Login to *APP* node if you're not there::
 
@@ -267,3 +268,16 @@ Verify the deployment, as you can see there are *main-, backend-, app2-* and *ap
   **service/app2             NodePort    10.43.66.125    <none>        80:30362/TCP   39h**
   **service/app3             NodePort    10.43.61.157    <none>        80:31662/TCP   39h**
   **service/syslog-svc       ClusterIP   10.43.206.48    <none>        514/TCP        38h**
+
+.. _verifyArcadia:
+Verify the Arcadia apps
+----
+
+At this point, you can access the app using exposed NodePort.
+From *Client* node, open Firefox web browser and navigate to::
+
+  http://app.arcadia.com:30511/
+
+You should see the app is running.
+
+.. image:: img/arcadia-nodeport.png
