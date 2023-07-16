@@ -1,22 +1,23 @@
 Configure App Protect Policy
 ====
 
-.. warning:: Back to *APP* node
+.. comment https://docs.nginx.com/nginx-ingress-controller/configuration/policy-resource/
   
-Policy CRD
+Policy Resource
 ----
 
-The Policy resource allows you to configure features like access control and rate-limiting, 
+The Policy resource allows you to configure features like access control, rate-limiting, waf
 which you can add to your *VirtualServer* and *VirtualServerRoute* resources.
-
-Policies work together with *VirtualServer* and *VirtualServerRoute* resources, which you need to create separately.
 
 The WAF policy configures *NGINX Plus* to secure client requests using *App Protect* WAF policies.
 
-For example, the following policy will enable the referenced APPolicy. 
-You can configure multiple *APLogConfs* with log destinations:
+For example, the following policy will enable the referenced
 
-::
+* APPolicy = *default/dataguard-alarm* 
+
+* and APLogConf = *default/logconf*
+
+``waf.yaml``::
 
   apiVersion: k8s.nginx.org/v1
   kind: Policy
@@ -31,13 +32,15 @@ You can configure multiple *APLogConfs* with log destinations:
         apLogConf: "default/logconf"
         logDest: "syslog:server=syslog-svc.default:514"
 
-App Protect Policy CRD
+App Protect Policy (APPolicy)
 ----
 
 You can define NGINX App Protect WAF policies for your *VirtualServer*, *VirtualServerRoute*
 by creating an *APPolicy* Custom Resource.
 
-The ``ap-dataguard-alarm-policy.yaml`` example file::
+Example below, referenced
+
+``ap-dataguard-alarm-policy.yaml`` file::
 
   apiVersion: appprotect.f5.com/v1beta1
   kind: APPolicy
@@ -85,8 +88,8 @@ then the request must be blocked.
 
 This definition referenced in *APPolicy* CRD.
 
-::
-  
+``ap-jeruk-uds.yaml`` file::
+
   apiVersion: appprotect.f5.com/v1beta1
   kind: APUserSig
   metadata:
@@ -109,7 +112,7 @@ This definition referenced in *APPolicy* CRD.
 Logging Resource Definition
 ----
 
-*syslog* deployment example::
+``syslog.yaml`` file::
 
   apiVersion: apps/v1
   kind: Deployment
@@ -144,8 +147,7 @@ Logging Resource Definition
     selector:
       app: syslog
 
-You can set the NGINX App Protect WAF log configurations by creating an *APLogConf* Custom Resource 
-like ``ap-logconf.yaml`` file below::
+``ap-logconf.yaml`` file::
 
   apiVersion: appprotect.f5.com/v1beta1
   kind: APLogConf
@@ -159,8 +161,7 @@ like ``ap-logconf.yaml`` file below::
     filter:
       request_type: all
 
-.. note::
-  From: https://github.com/nginxinc/kubernetes-ingress/tree/v3.2.0/examples/custom-resources/app-protect-waf
+.. comment From: https://github.com/nginxinc/kubernetes-ingress/tree/v3.2.0/examples/custom-resources/app-protect-waf
 
 Deploy The Manifests
 ----

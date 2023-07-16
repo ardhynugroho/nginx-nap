@@ -6,7 +6,9 @@
     deploy-nic
     deploy-arcadia-app
     deploy-waf-policy
-    security-test
+    waf-xss-test
+    bot-defense
+    user-signature-test
 
 Topology
 ====
