@@ -2,7 +2,7 @@ K3s Kubernetes Cluster Installation
 ====
 
 K3s will be used in this lab, to host the test application.
-K3s coming with *traefik* ingress controller. 
+K3s come with *traefik* ingress controller. 
 But it will be replaced with *NGINX Ingress Controller* in the next step.
 
 .. note::
@@ -42,6 +42,10 @@ Examine install script `k3s.sh` below::
   sudo systemctl restart k3s
   
   echo "Done"
+
+Execute the install script::
+
+  $ bash k3s.sh
 
 Verify the cluster::
 

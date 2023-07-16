@@ -6,9 +6,11 @@ Topology
 
 .. image:: img/topologi.jpeg
 
-- *Client* node will be used as jump host and test client. It uses RDP protocol to access.
+*Client* node
+  This node will be used as jump host and test client. It uses RDP protocol to access.
 
-- *App* node is where the test application will be hosted. The test app is micro-services based hence *k3s* cluster installed in this node.
+*App* node 
+  The place where the test application will be hosted. The test app is micro-services based hence *k3s* cluster installed in this node.
 
 Your Deployment
 ----

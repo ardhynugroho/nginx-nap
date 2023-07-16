@@ -10,9 +10,9 @@ Deployment manifest
 ----
 
 Definitions:
-- Persistent volume & claim
-- *local-registry* pod
-- Service
+* Persistent volume & claim
+* *local-registry* pod
+* Service
 
 Create local-registry manifest named ``local-registry.yaml``::
 
@@ -98,12 +98,12 @@ Deployment script
 ----
 
 Steps:
-- Generate certificate
-- Generate *htpasswd*
-- Create *tls, generic* and *docker-registry secrets*
-- Deploy *local-registry.yaml* manifest
-- Setup docker to use local-registry
-- Setup K3s to use local-registry
+1. Generate certificate
+#. Generate *htpasswd*
+#. Create *tls, generic* and *docker-registry secrets*
+#. Deploy *local-registry.yaml* manifest
+#. Setup docker to use local-registry
+#. Setup K3s to use local-registry
 
 Examine deployment script ``local-registry.sh`` below::
 
