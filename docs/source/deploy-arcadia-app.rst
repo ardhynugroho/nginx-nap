@@ -5,7 +5,7 @@ About Aracdia App. Architecture
 ----
 
 .. note:: 
-  This application is available in GitLab <https://gitlab.com/arcadia-application>_
+  This application is available in `Arcadia App GitLab repository <https://gitlab.com/arcadia-application>`_
 
 This is the architecture of Arcadia apps. It has 4 micro-services and they're routed using URI.
 
@@ -27,13 +27,19 @@ Deploy The Apps In Kubernetes
 ----
 
 .. note::
-  For the interrest of time, the apps is already deployed.
+  For the interrest of time, the apps is already deployed, you dont need to do anything here.
+  
   You can moving forward to :ref:`verifyArcadia` step.
+  
+  Else you can start over by execute below command under ``/home/ubuntu/arcadia``::
+
+    $ kubectl delete -f app.yaml
+    $ kubectl delete -f vs-1.yaml
 
 .. warning::
   You should be login in *APP* node
 
-Enter ``arcadia`` directory::
+Enter ``/home/ubuntu/arcadia`` directory::
 
   $ cd /home/ubuntu/arcadia
 
@@ -277,6 +283,7 @@ Verify the Arcadia apps
   Do this from *Client* node
 
 At this point, you should can access the app using exposed NodePort.
+
 From *Client* node, open Firefox web browser and navigate to::
 
   http://app.arcadia.com:30511/
@@ -314,13 +321,14 @@ From ``/home/ubuntu/arcadia`` directory, there is ``vs-1.yaml`` manifest file wi
       action:
         pass: backend
 
-Now apply ``vs-1.yaml`` manifest from ``/home/ubuntu/arcadia`` directory::
+Now apply ``vs-1.yaml`` manifest::
 
   $ kubectl apply -f vs-1.yaml
 
 .. warning::
   Go back to *Client* node
 
-Verify the Arcadia App by open ``http://app.arcadia.com/`` in the Firefox web browser.
+Verify the Arcadia App by open ``http://app.arcadia.com/`` in the Firefox web browser. 
+Notice we ommited port 30511 in the URL, so the request will hit port 80.
 
 At this point. The Arcadia app is up and running served by *NGINX Plus Ingress Controller*

@@ -6,7 +6,7 @@ K3s come with *traefik* ingress controller.
 But it will be replaced with *NGINX Plus Ingress Controller* in the next step.
 
 .. note::
-  This already installed for lab. hands-on session. You can skip this step.
+  This already installed for lab. hands-on session, you don't need to do anything.
 
 .. warning::
   Make sure you're login to *APP* node.
@@ -23,7 +23,7 @@ Make it persistent across restart::
 The *K3s* Install Script
 ----
 
-This script will install *k3s* and then remove default *ingress controller*.:
+This script will install *k3s* and then remove default *ingress controller*::
 
   #!/bin/bash
   

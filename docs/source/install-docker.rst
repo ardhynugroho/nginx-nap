@@ -4,7 +4,7 @@ Docker Installation
 We will use *Docker* to install *NGINX Plus Ingress Controller* in the next step.
 
 .. note::
-  This already installed for lab. hands-on session. You can skip this step.
+  This already installed for lab. hands-on session, you don't need to do anything.
 
 .. warning::
   Make sure you're login to *APP* node.
@@ -16,7 +16,7 @@ Change directory to ``setup``::
 The *Docker* Install Script
 ----
 
-Steps:
+Things executed in this script:
 
 1. Add *docker* apt repository
 
@@ -69,4 +69,4 @@ You can remove terminated *nginx* container for cleanup::
 
   $ docker rm nginx
 
-In this point, docker is ready.
+In this point, *Docker* is ready.

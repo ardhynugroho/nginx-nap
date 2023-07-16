@@ -20,13 +20,19 @@ Main
   The pod of main Arcadia app
 
 Backend
-  The pod of Arcadia app for ``/files`` endpoint
+  The pod of Arcadia app backend
 
 App2
   The pod of Arcadia app money transfer service
 
 App3
   The pod of Arcadia app referral service
+
+Local-registry
+  Docker registry running on local kubernetes cluster
+
+Docker
+  Self-explained
 
 Your Lab. Deployment
 ----

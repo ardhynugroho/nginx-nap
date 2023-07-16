@@ -2,7 +2,7 @@ Deploy Nginx Plus Ingress Controller
 ====
 
 .. note::
-  This already deployed for lab. hands-on session. You can skip this step.
+  This already installed for lab. hands-on session, you don't need to do anything.
   
 About NGINX Private Registry Access
 ----
@@ -22,7 +22,7 @@ Downloade the SSL certificate & private key and save it in *APP* node as
 Deployment Script
 ----
 
-The script summarize install steps:
+The script summarize following install steps:
 
 1. Pull images from NGINX private repo and push them to our *local-registry*
 
@@ -94,7 +94,7 @@ Take a look at the ``nic.sh`` deployment script below::
     echo "Required nginx-repo.crt and/or nginx-repo.key files not found"
   fi
 
-Now, let's execute the script::
+Now, let's execute the script, but make sure you're in ``/home/ubuntu/setup``::
 
   $ bash nic.sh
 
@@ -114,4 +114,5 @@ After script execution finished, let's verify the deployment::
   daemonset.apps/nginx-ingress   1         1         1       1            1           <none>          38h   nginx-plus-ingress   local-registry:5000/nginx-ic-nap/nginx-plus-ingress:3.2.0   app=nginx-ingress
 
 As you can see, the pod is running, service & daemonset are defined.
+
 At this point, the *Ingress Controller* is ready.

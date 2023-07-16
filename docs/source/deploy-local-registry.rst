@@ -4,7 +4,7 @@ Deploy Docker Local Registry
 A local registry is needed to install *NGINX Plus Ingress Controller* from *k3s*.
 
 .. note::
-  This already deployed for lab. hands-on session. You can skip this step.
+  This already deployed for lab. hands-on session, you don't need to do anything.
 
 .. warning::
   Make sure you're login to *APP* node.
@@ -17,13 +17,13 @@ Definitions in the manifest:
 Persistent volume & claim
   Required to store downloaded *Docker* images, it needs to be persistent.
 
-*local-registry* pods
+The *local-registry* pod
   The pod itself.
 
 Service
   To publish the *local-registry* service.
 
-Take a look at ``/home/ubuntu/setup/local-registry.yaml`` file::
+This is ``/home/ubuntu/setup/local-registry.yaml`` manifest file::
 
   apiVersion: v1
   kind: PersistentVolume
@@ -106,7 +106,7 @@ Take a look at ``/home/ubuntu/setup/local-registry.yaml`` file::
 Deployment script
 ----
 
-Steps executed in this script:
+Steps executed by this script:
 
 1. Generate TLS certificate and *htpasswd* file
 
@@ -118,7 +118,7 @@ Steps executed in this script:
 
 #. Setup K3s to use the *local-registry*
 
-This is ``/home/ubuntu/setup/local-registry.sh`` script look like::
+This is ``/home/ubuntu/setup/local-registry.sh`` script file::
 
   #!/bin/bash
   #
@@ -174,14 +174,14 @@ This is ``/home/ubuntu/setup/local-registry.sh`` script look like::
   docker login local-registry:5000 -u myuser -p mypasswd
   echo "Local-registry setup, done!"
 
-Run the deployment script::
+Make sure you're currently in ``/home/ubuntu/setup`` then run the deployment script::
 
   $ bash local-registry.sh
 
 Verify Deployment
 ----
 
-After finished, verify the result::
+After finished, you can verify the result using below command::
 
   $ kubectl get pods,svc,ep local-registry -o wide
   NAME                 READY   STATUS    RESTARTS        AGE   IP           NODE   NOMINATED NODE   READINESS GATES
@@ -193,9 +193,9 @@ After finished, verify the result::
   NAME                       ENDPOINTS         AGE
   endpoints/local-registry   10.42.0.40:5000   38h
 
-You can see the pods is running, the service & endpoint is defined.
+You can see the pod is running, the service & endpoint are defined.
 
-Check if *Docker* can login to *local-registry*::
+Check if you can login to *local-registry* via *Docker CLI*::
 
   $ docker login local-registry:5000 -u myuser -p mypasswd
 

@@ -7,13 +7,14 @@ The Policy CRD
 ----
 
 The Policy resource allows you to configure features like access control and rate-limiting, 
-which you can add to your VirtualServer and VirtualServerRoute resources.
+which you can add to your *VirtualServer* and *VirtualServerRoute* resources.
 
-Policies work together with VirtualServer and VirtualServerRoute resources, which you need to create separately.
+Policies work together with *VirtualServer* and *VirtualServerRoute* resources, which you need to create separately.
 
-The WAF policy configures NGINX Plus to secure client requests using App Protect WAF policies.
+The WAF policy configures *NGINX Plus* to secure client requests using *App Protect* WAF policies.
 
-For example, the following policy will enable the referenced APPolicy. You can configure multiple APLogConfs with log destinations:
+For example, the following policy will enable the referenced APPolicy. 
+You can configure multiple *APLogConfs* with log destinations:
 
 ::
 
@@ -33,10 +34,10 @@ For example, the following policy will enable the referenced APPolicy. You can c
 NGINX App Protect Policy CRD
 ----
 
-You can define NGINX App Protect WAF policies for your VirtualServer, VirtualServerRoute,
-by creating an APPolicy Custom Resource.
+You can define NGINX App Protect WAF policies for your *VirtualServer*, *VirtualServerRoute*
+by creating an *APPolicy* Custom Resource.
 
-The ``ap-dataguard-alarm-policy.yaml`` file::
+The ``ap-dataguard-alarm-policy.yaml`` example file::
 
   apiVersion: appprotect.f5.com/v1beta1
   kind: APPolicy
@@ -77,13 +78,12 @@ User Defined App Protect Signature CRD
 ----
 
 You can define NGINX App Protect WAF User-Defined Signatures 
-for your VirtualServer or Ingress resources by creating an APUserSig Custom Resource.
+for your *VirtualServer* by creating an *APUserSig* Custom Resource.
 
-In example below, we add user-signature that if there is "jeruk" string in the request then it must be blocked.
+In example below, we add user-signature that if there is "jeruk" string detected in the request 
+then the request must be blocked.
 
-This definition referenced in APPolicy CRD.
-
-``ap-jeruk-uds.yaml`` file::
+This definition referenced in *APPolicy* CRD.
 
   apiVersion: appprotect.f5.com/v1beta1
   kind: APUserSig
@@ -107,9 +107,7 @@ This definition referenced in APPolicy CRD.
 Syslog and Logconf Definition
 ----
 
-
-
-The ``syslog.yaml`` file::
+*syslog* deployment example::
 
   apiVersion: apps/v1
   kind: Deployment
@@ -144,7 +142,8 @@ The ``syslog.yaml`` file::
     selector:
       app: syslog
 
-You can set the NGINX App Protect WAF log configurations by creating an APLogConf Custom Resource like ``ap-logconf.yaml`` file below::
+You can set the NGINX App Protect WAF log configurations by creating an *APLogConf* Custom Resource 
+like ``ap-logconf.yaml`` file below::
 
   apiVersion: appprotect.f5.com/v1beta1
   kind: APLogConf
