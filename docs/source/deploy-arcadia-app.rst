@@ -1,12 +1,43 @@
-Deploy arcadia app
+Deploy The Arcadia App
 ====
 
-from: https://gitlab.com/arcadia-application
+Architecture
+----
 
-cd ~/arcadia
-kubectl apply -f app.yaml
+.. note:: 
+  This application is available in GitLab <https://gitlab.com/arcadia-application>_
 
-Create manifest file ``app.yaml``::
+This is the architecture of Arcadia apps. It has 4 micro-services. It routed using URI.
+
+.. image:: img/arcadia-arch.png
+
+This is what it's look like when only main and backend app deployed.
+
+.. image:: img/arcadia-main-be.png
+
+This is main, backend and money transfer deployed.
+
+.. image:: img/arcadia-main-be-money.png
+
+This is main, backend, money transfer and referral deployed.
+
+.. image:: img/arcadia-main-be-money-friend.png
+
+Deploy in kubernetes
+---
+
+.. note::
+  For the interrest of time, the apps is already deployed.
+
+Login to *APP* node if you're not there::
+
+  $ ssh app
+
+Enter arcadia directory::
+
+  $ cd /home/ubuntu/arcadia
+
+Examine app deployment file ``app.yaml`` below::
 
   ##################################################################################################
   # FILES - BACKEND
@@ -213,6 +244,26 @@ Create manifest file ``app.yaml``::
           - containerPort: 80
             protocol: TCP
 
-Apply::
+Apply the manifest above::
 
-  kubectl apply -f app.yaml
+  $ kubectl apply -f app.yaml
+
+Verify the deployment, as you can see there are *main-, backend-, app2-* and *app-3* pods and their services::
+
+  $ kubectl get pods,svc
+  NAME                           READY   STATUS    RESTARTS        AGE
+  **pod/app2-6999bc5c98-lfbzj      1/1     Running   2 (4h26m ago)   39h**
+  pod/syslog-56d66bfffc-ftql6    1/1     Running   2 (4h26m ago)   38h
+  pod/local-registry             1/1     Running   3 (4h26m ago)   39h
+  **pod/main-66767686d9-xw9br      1/1     Running   2 (4h26m ago)   39h**
+  **pod/backend-78c5979444-9k7rf   1/1     Running   2 (4h26m ago)   39h**
+  **pod/app3-554b8c45d5-8mlsv      1/1     Running   2 (4h26m ago)   39h**
+  
+  NAME                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+  service/kubernetes       ClusterIP   10.43.0.1       <none>        443/TCP        39h
+  service/local-registry   ClusterIP   10.43.3.5       <none>        5000/TCP       39h
+  service/backend          NodePort    10.43.248.112   <none>        80:31584/TCP   39h
+  **service/main             NodePort    10.43.136.176   <none>        80:30511/TCP   39h**
+  **service/app2             NodePort    10.43.66.125    <none>        80:30362/TCP   39h**
+  **service/app3             NodePort    10.43.61.157    <none>        80:31662/TCP   39h**
+  **service/syslog-svc       ClusterIP   10.43.206.48    <none>        514/TCP        38h**

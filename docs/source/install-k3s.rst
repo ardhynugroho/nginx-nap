@@ -54,6 +54,9 @@ Execute the install script::
 
   $ bash k3s.sh
 
+Verify Installation
+----
+
 After script execution finished, verify the cluster::
 
   $ kubectl get nodes

@@ -48,7 +48,9 @@ Run a *NGINX* container::
   latest: Pulling from library/nginx
   ...
   ...
-  [ctl-c]
+  [ctl-C]
+
+You can terminate using [ctl-C] key.
 
 Show terminated *nginx* container::
 

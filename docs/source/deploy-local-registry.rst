@@ -6,8 +6,9 @@ A local registry is needed to install *NGINX Plus Ingress Controller* from *k3s*
 .. note::
   This already deployed for lab. hands-on session. You can skip this step.
 
-.. warning::
-  Make sure you're login to *App* node
+Login in APP node if you’re not there::
+
+  $ ssh app
 
 Deployment manifest
 ----
@@ -176,6 +177,9 @@ Examine deployment script ``local-registry.sh`` below::
 Run the deployment script::
 
   $ bash local-registry.sh
+
+Verify Deployment
+----
 
 After finished, verify the result::
 

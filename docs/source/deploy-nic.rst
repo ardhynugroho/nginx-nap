@@ -4,19 +4,35 @@ Deploy Nginx Plus Ingress Controller With App Protect
 Prerequisite
 ----
 
-You will need valid *NGINX* repo certificate to be able to access *NGINX Plus* software.
+You will need valid *NGINX* private registry certificate to be able to access *NGINX Plus* software.
 
 Log in to MyF5 Customer Portal and download your trial SSL certificate & private key.
 
 .. image:: img/download-certs.png
 
-Save them as ``nginx-repo.crt`` and ``nginx-repo.key`` to ``/home/ubuntu/setup`` directory.
+Login to *APP* node if you're not there::
+
+  $ ssh app
+
+Copy & paste downloaded certificate & private key earlier as
+``nginx-repo.crt`` and ``nginx-repo.key`` to ``/home/ubuntu/setup`` directory.
 
 Install Script
 ----
 
-The steps are summarized in below shell script.
-Examine install script ``nic.sh``::
+The script summarize install steps:
+
+1. Pull images from NGINX private repo and push them to our *local-registry*
+
+#. Clone kubernetes ingress repo from *NGINX* github
+
+#. Deploy the manifests
+
+#. Patching service account to point the registry to out *local-registry*
+
+#. Deploy the ingress controller & create the service
+
+Examine install script ``nic.sh`` below::
 
   #!/bin/bash
   #
@@ -77,7 +93,10 @@ Examine install script ``nic.sh``::
 Execute the script::
 
   $ bash nic.sh
-  
+
+Verify Deployment
+----
+
 After finished, verify the deployment::
 
   $ kubectl -n nginx-ingress get all -o wide
