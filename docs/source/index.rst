@@ -1,7 +1,7 @@
 .. toctree::
     lab-setup
-    install-docker
     install-k3s
+    install-docker
     deploy-local-registry
     install-nic
     deploy-arcadia-app

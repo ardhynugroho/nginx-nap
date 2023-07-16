@@ -1,5 +1,18 @@
-Setup local-registry
+Deploy Docker Local Registry
 ====
+
+A local registry is needed to install *NGINX Plus Ingress Controller* from *k3s*.
+
+.. note::
+  This already deployed for lab. hands-on session. You can skip this step.
+
+Deployment manifest
+----
+
+Definitions:
+- Persistent volume & claim
+- *local-registry* pod
+- Service
 
 Create local-registry manifest named ``local-registry.yaml``::
 
@@ -81,8 +94,18 @@ Create local-registry manifest named ``local-registry.yaml``::
       - port: 5000
         targetPort: 5000
 
+Deployment script
+----
 
-Examine install script ``local-registry.sh``::
+Steps:
+- Generate certificate
+- Generate *htpasswd*
+- Create *tls, generic* and *docker-registry secrets*
+- Deploy *local-registry.yaml* manifest
+- Setup docker to use local-registry
+- Setup K3s to use local-registry
+
+Examine deployment script ``local-registry.sh`` below::
 
   #!/bin/bash
   #
@@ -133,9 +156,13 @@ Examine install script ``local-registry.sh``::
   EOF
   sudo mv /tmp/registries.yaml /etc/rancher/k3s/
   sudo systemctl restart k3s
+
+  # Test
   docker login local-registry:5000 -u myuser -p mypasswd
   echo "Local-registry setup, done!"
 
-Apply above script::
+Run the deployment script::
 
   bash local-registry.sh
+
+In this point, the local registry is deployed inside k3s.
