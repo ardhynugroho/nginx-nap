@@ -137,15 +137,12 @@ The ``ap-logconf.yaml`` file::
     filter:
       request_type: all
 
-  $ kubectl apply -f syslog.yaml
-
-
 from: https://github.com/nginxinc/kubernetes-ingress/tree/v3.2.0/examples/custom-resources/app-protect-waf
 
 Deploy The Manifests
 ----
 
-:
+::
 
   $ kubectl apply -f syslog.yaml
   $ kubectl apply -f ap-jeruk-uds.yaml
