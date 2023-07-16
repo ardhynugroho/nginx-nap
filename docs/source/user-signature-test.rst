@@ -1,4 +1,4 @@
-User Signature test
+User Signature Test
 ====
 
 #. Open Firefox browser and go to Arcadia App login
