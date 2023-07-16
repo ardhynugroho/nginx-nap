@@ -35,10 +35,10 @@ In your deployment, from *APP* node select *ACCESS > Web Shell*
 .. image:: img/webshell.png
 
 Now you should got root prompt from the *Web Shell*. Use below command to change *ubuntu* user password::
-
+  
   # passwd ubuntu
 
-When prompted, use *ubuntu* as the *New password*
+When prompted, type *ubuntu* in the *New password* & *Retype new password* prompt
 
 .. image:: img/ch-ubuntu-passwd.png
 
@@ -49,7 +49,7 @@ Every step in this lab. will be done from *Client* node over remote desktop.
 This method protects from losing session when network disconnect happen.
 You will need a RDP client installed in your laptop / PC.
 
-In your deployment, from *Client* node select **ACCESS > xRDP > 1280x800**. A RDP file will be downloaded.
+In your deployment, from *Client* node select **ACCESS > xRDP > 1280x800**. Then a RDP file will be downloaded.
 
 .. image:: img/xrdp.png
 

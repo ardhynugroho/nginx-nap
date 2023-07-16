@@ -1,23 +1,22 @@
 Docker Installation
 ====
 
-Docker will be used to install NGINX Ingress Controller in the next step.
+We will use *Docker* to install *NGINX Plus Ingress Controller* in the next step.
 
 .. note::
   This already installed for lab. hands-on session. You can skip this step.
 
-Login in *APP* node if you're not there::
-  
-  $ ssh app
+.. warning::
+  Make sure you're login to *APP* node.
 
 Change directory to ``setup``::
   
   $ cd /home/ubuntu/setup
 
-Install Script
+The *Docker* Install Script
 ----
 
-Examine `docker.sh` file below::
+The `docker.sh` install script::
 
   #!/bin/bash
   set -x
@@ -34,7 +33,7 @@ Examine `docker.sh` file below::
   sudo addgroup ubuntu docker
   sudo su ubuntu
 
-Apply the script to install:: 
+Then execute the script:: 
   
   $ bash docker.sh
 

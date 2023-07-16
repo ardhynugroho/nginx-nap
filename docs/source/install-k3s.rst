@@ -1,18 +1,17 @@
 Kubernetes Cluster Installation
 ====
 
-K3s will be used in this lab, to host the test application.
+K3s will be used in this lab. to run Arcadia app micro-services.
 K3s come with *traefik* ingress controller. 
-But it will be replaced with *NGINX Ingress Controller* in the next step.
+But it will be replaced with *NGINX Plus Ingress Controller* in the next step.
 
 .. note::
   This already installed for lab. hands-on session. You can skip this step.
 
-Login to *APP* node if you're not there::
-  
-  $ ssh app
+.. warning::
+  Make sure you're login to *APP* node.
 
-Then change install target hostname to `app`::
+Change install target hostname to `app`::
 
   $ sudo bash
   # hostname app
@@ -21,10 +20,12 @@ Make it persistent across restart::
 
   # echo "app" > /etc/hostname
 
-Install Script
+The K3s Install Script
 ----
 
-Examine install script `k3s.sh` below::
+This script will install *k3s* and then remove default *ingress controller*.
+
+The `k3s.sh` script file::
 
   #!/bin/bash
   
@@ -54,7 +55,7 @@ Execute the install script::
 
   $ bash k3s.sh
 
-Verify Installation
+Verify *k3s* Installation
 ----
 
 After script execution finished, verify the cluster::
@@ -66,4 +67,11 @@ Make sure node status is *Ready*::
   NAME   STATUS   ROLES                  AGE   VERSION
   app    Ready    control-plane,master   36h   v1.27.3+k3s1
 
-In this point, k3s is ready.
+You also can check if *traefik* service no longer listed::
+
+  $ kubectl get svc -n kube-system
+  NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                  AGE
+  kube-dns         ClusterIP   10.43.0.10      <none>        53/UDP,53/TCP,9153/TCP   41h
+  metrics-server   ClusterIP   10.43.141.175   <none>        443/TCP                  41h
+
+In this point, *k3s* is ready.

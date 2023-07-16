@@ -1,13 +1,13 @@
 Deploy The Arcadia App
 ====
 
-Architecture
+About Aracdia App. Architecture
 ----
 
 .. note:: 
   This application is available in GitLab <https://gitlab.com/arcadia-application>_
 
-This is the architecture of Arcadia apps. It has 4 micro-services. It routed using URI.
+This is the architecture of Arcadia apps. It has 4 micro-services and they're routed using URI.
 
 .. image:: img/arcadia-arch.png
 
@@ -15,24 +15,23 @@ This is what it's look like when only main and backend app deployed.
 
 .. image:: img/arcadia-main-be.png
 
-This is main, backend and money transfer deployed.
+This is what displayed when main, backend and money transfer deployed.
 
 .. image:: img/arcadia-main-be-money.png
 
-This is main, backend, money transfer and referral deployed.
+This is what displayed when main, backend, money transfer and referral deployed.
 
 .. image:: img/arcadia-main-be-money-friend.png
 
-Deploy the apps in kubernetes
+Deploy The Apps In Kubernetes
 ----
 
 .. note::
   For the interrest of time, the apps is already deployed.
   You can moving forward to :ref:`verifyArcadia` step.
 
-Login to *APP* node if you're not there::
-
-  $ ssh app
+.. warning::
+  You should be login in *APP* node
 
 Enter arcadia directory::
 
@@ -273,6 +272,9 @@ Verify the deployment, as you can see there are *main-, backend-, app2-* and *ap
 Verify the Arcadia apps
 ----
 
+.. warning::
+  You should do this from *Client* node
+
 At this point, you should can access the app using exposed NodePort.
 From *Client* node, open Firefox web browser and navigate to::
 
@@ -285,7 +287,10 @@ You should see the app is running.
 Publish the Arcadia App Using *NGINX Plus Ingress Controller*
 ----
 
-Still from ``arcadia`` directory, there is ``vs-1.yaml`` manifest file::
+.. warning::
+  Location: *APP* node
+
+From ``/home/ubuntu/arcadia`` directory, there is ``vs-1.yaml`` manifest file with below content::
 
   apiVersion: k8s.nginx.org/v1
   kind: VirtualServer
@@ -308,9 +313,12 @@ Still from ``arcadia`` directory, there is ``vs-1.yaml`` manifest file::
       action:
         pass: backend
 
-Apply ``vs-1.yaml`` manifest::
+Now apply ``vs-1.yaml`` manifest from ``/home/ubuntu/arcadia`` directory::
 
   $ kubectl apply -f vs-1.yaml
+
+.. warning::
+  Location: *Client* node
 
 Verify the Arcadia App by open ``http://app.arcadia.com/`` in the Firefox web browser.
 

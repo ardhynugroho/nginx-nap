@@ -1,38 +1,42 @@
-Deploy Nginx Plus Ingress Controller With App Protect
+Deploy Nginx Plus Ingress Controller
 ====
 
 Prerequisite
 ----
 
-You will need valid *NGINX* private registry certificate to be able to access *NGINX Plus* software.
+You will need valid *NGINX* private registry certificate to be able to access *NGINX Plus* software images.
 
-Log in to MyF5 Customer Portal and download your trial SSL certificate & private key.
+To obtain required files, log in to MyF5 Customer Portal and download your trial SSL certificate & private key.
 
 .. image:: img/download-certs.png
 
-Login to *APP* node if you're not there::
-
-  $ ssh app
-
 Copy & paste downloaded certificate & private key earlier as
-``nginx-repo.crt`` and ``nginx-repo.key`` to ``/home/ubuntu/setup`` directory.
+``nginx-repo.crt`` and ``nginx-repo.key`` to ``/home/ubuntu/setup`` directory inside *APP* node.
 
-Install Script
+.. note::
+  This already deployed for lab. hands-on session. You can skip this step.
+  
+.. warning::
+  Make sure you're login to *APP* node.
+
+Deployment Script
 ----
 
 The script summarize install steps:
 
 1. Pull images from NGINX private repo and push them to our *local-registry*
 
-#. Clone kubernetes ingress repo from *NGINX* github
+#. Clone *kubernetes-ingress* from *NGINX* Git repository <https://github.com/nginxinc/kubernetes-ingress.git>_
 
-#. Deploy the manifests
+#. Deploy the manifests (namespaces, service account, RBAC, CRDs)
 
-#. Patching service account to point the registry to out *local-registry*
+#. Patching service account *imagePullSecrets*
+
+#. Update image name & enable app-protect in *daemon-set/nginx-plus-ingress.yaml* file
 
 #. Deploy the ingress controller & create the service
 
-Examine install script ``nic.sh`` below::
+Take a look at the ``nic.sh`` deployment script below::
 
   #!/bin/bash
   #
@@ -94,10 +98,10 @@ Execute the script::
 
   $ bash nic.sh
 
-Verify Deployment
+Verify The Result
 ----
 
-After finished, verify the deployment::
+After script execution finished, let's verify the deployment::
 
   $ kubectl -n nginx-ingress get all -o wide
   NAME                      READY   STATUS    RESTARTS        AGE   IP           NODE   NOMINATED NODE   READINESS GATES
@@ -109,4 +113,5 @@ After finished, verify the deployment::
   NAME                           DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE   CONTAINERS           IMAGES                                                      SELECTOR
   daemonset.apps/nginx-ingress   1         1         1       1            1           <none>          38h   nginx-plus-ingress   local-registry:5000/nginx-ic-nap/nginx-plus-ingress:3.2.0   app=nginx-ingress
 
+As you can see, the pod is running, service & daemonset are defined.
 At this point, the *Ingress Controller* is ready.
