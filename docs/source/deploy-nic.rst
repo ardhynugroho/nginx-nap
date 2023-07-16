@@ -1,8 +1,21 @@
-Deploy Nginx Ingress Controller
+Deploy Nginx Plus Ingress Controller With App Protect
 ====
 
-Log in to MyF5 Customer Portal and download your ``nginx-repo.crt`` and ``nginx-repo.key`` files to ``~setup`` directory.
+Prerequisite
+----
 
+You will need valid *NGINX* repo certificate to be able to access *NGINX Plus* software.
+
+Log in to MyF5 Customer Portal and download your trial SSL certificate & private key.
+
+.. image:: img/download-certs.png
+
+Save them as ``nginx-repo.crt`` and ``nginx-repo.key`` to ``/home/ubuntu/setup`` directory.
+
+Install Script
+----
+
+The steps are summarized in below shell script.
 Examine install script ``nic.sh``::
 
   #!/bin/bash
@@ -60,3 +73,21 @@ Examine install script ``nic.sh``::
   else
     echo "Required nginx-repo.crt and/or nginx-repo.key files not found"
   fi
+
+Execute the script::
+
+  $ bash nic.sh
+  
+After finished, verify the deployment::
+
+  $ kubectl -n nginx-ingress get all -o wide
+  NAME                      READY   STATUS    RESTARTS        AGE   IP           NODE   NOMINATED NODE   READINESS GATES
+  pod/nginx-ingress-p9jx6   1/1     Running   6 (3h25m ago)   38h   10.42.0.47   app    <none>           <none>
+
+  NAME                    TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE   SELECTOR
+  service/nginx-ingress   NodePort   10.43.181.81   <none>        80:32160/TCP,443:32691/TCP   38h   app=nginx-ingress
+
+  NAME                           DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE   CONTAINERS           IMAGES                                                      SELECTOR
+  daemonset.apps/nginx-ingress   1         1         1       1            1           <none>          38h   nginx-plus-ingress   local-registry:5000/nginx-ic-nap/nginx-plus-ingress:3.2.0   app=nginx-ingress
+
+At this point, the *Ingress Controller* is ready.

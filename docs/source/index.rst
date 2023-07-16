@@ -3,7 +3,7 @@
     install-k3s
     install-docker
     deploy-local-registry
-    install-nic
+    deploy-nic
     deploy-arcadia-app
     deploy-waf-policy
     security-test

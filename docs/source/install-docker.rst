@@ -6,7 +6,11 @@ Docker will be used to install NGINX Ingress Controller in the next step.
 .. note::
   This already installed for lab. hands-on session. You can skip this step.
 
-Login in *APP* node, change directory to ``setup``::
+Login in *APP* node if you're not there::
+  
+  $ ssh app
+
+Change directory to ``setup``::
   
   $ cd /home/ubuntu/setup
 

@@ -6,6 +6,9 @@ A local registry is needed to install *NGINX Plus Ingress Controller* from *k3s*
 .. note::
   This already deployed for lab. hands-on session. You can skip this step.
 
+.. warning::
+  Make sure you're login to *App* node
+
 Deployment manifest
 ----
 
@@ -13,7 +16,7 @@ Definitions:
 
 * Persistent volume & claim
 
-* *local-registry* pod
+* *local-registry* pods
 
 * Service
 
@@ -172,6 +175,20 @@ Examine deployment script ``local-registry.sh`` below::
 
 Run the deployment script::
 
-  bash local-registry.sh
+  $ bash local-registry.sh
+
+After finished, verify the result::
+
+  $ kubectl get pods,svc,ep local-registry -o wide
+  NAME                 READY   STATUS    RESTARTS        AGE   IP           NODE   NOMINATED NODE   READINESS GATES
+  pod/local-registry   1/1     Running   3 (3h13m ago)   38h   10.42.0.40   app    <none>           <none>
+
+  NAME                     TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+  service/local-registry   ClusterIP   10.43.3.5    <none>        5000/TCP   38h   app=local-registry
+
+  NAME                       ENDPOINTS         AGE
+  endpoints/local-registry   10.42.0.40:5000   38h
+
+You can see the pods is running, the service & endpoint is defined.
 
 In this point, the local registry is deployed inside k3s.

@@ -1,4 +1,4 @@
-K3s Kubernetes Cluster Installation
+Kubernetes Cluster Installation
 ====
 
 K3s will be used in this lab, to host the test application.
@@ -8,10 +8,17 @@ But it will be replaced with *NGINX Ingress Controller* in the next step.
 .. note::
   This already installed for lab. hands-on session. You can skip this step.
 
-In the *APP* node, change install target hostname to `app` & make it persistent across restart::
+Login to *APP* node if you're not there::
+  
+  $ ssh app
+
+Then change install target hostname to `app`::
 
   $ sudo bash
   # hostname app
+
+Make it persistent across restart::
+
   # echo "app" > /etc/hostname
 
 Install Script
@@ -47,7 +54,7 @@ Execute the install script::
 
   $ bash k3s.sh
 
-Verify the cluster::
+After script execution finished, verify the cluster::
 
   $ kubectl get nodes
 
