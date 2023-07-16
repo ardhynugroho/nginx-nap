@@ -1,6 +1,9 @@
 About The Lab
 ====
 
+This guide covers NGINX Plus with App. Protect deployment as Kubernetes Ingress Controller, 
+configure security policy & testing. Arcadia app is used as test application.
+
 Topology
 ----
 

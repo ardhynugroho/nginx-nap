@@ -2,7 +2,9 @@ Configure App Protect Policy
 ====
 
 .. comment https://docs.nginx.com/nginx-ingress-controller/configuration/policy-resource/
-  
+
+NGINX App Protect base policy provide OWASP Top 10 & Bot protection.
+
 Policy Resource
 ----
 
