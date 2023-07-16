@@ -6,7 +6,7 @@ Back to *APP* node. Navigate to ``/home/ubuntu/setup``
 Main WAF Policy
 ----
 
-``waf.yaml``
+The ``waf.yaml`` file::
 
   apiVersion: k8s.nginx.org/v1
   kind: Policy
@@ -24,7 +24,7 @@ Main WAF Policy
 NGINX App Protect Policy
 ----
 
-``ap-dataguard-alarm-policy.yaml``::
+The ``ap-dataguard-alarm-policy.yaml`` file::
 
   apiVersion: appprotect.f5.com/v1beta1
   kind: APPolicy
@@ -144,6 +144,8 @@ from: https://github.com/nginxinc/kubernetes-ingress/tree/v3.2.0/examples/custom
 
 Deploy The Manifests
 ----
+
+:
 
   $ kubectl apply -f syslog.yaml
   $ kubectl apply -f ap-jeruk-uds.yaml
