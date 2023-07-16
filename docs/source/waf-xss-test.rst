@@ -3,7 +3,7 @@ XSS Attack Test
 
 #. Open a terminal emulator and login to *APP* node 
 
-#. In *APP* node
+#. In *APP* node, hange working directory to ``/home/ubuntu/arcadia``
 
     .. code-block::
         
@@ -15,7 +15,7 @@ XSS Attack Test
 
       $ kubectl apply -f vs-2.yaml
 
-#. Open another terminal emulator and login to *APP* node then monitor the syslog
+#. Open another terminal emulator and login to *APP* node then monitor the syslog output
 
     .. code-block::
 
@@ -23,7 +23,7 @@ XSS Attack Test
 
       $ podname=`kubectl get pods | awk '/^syslog/{print $1}'`; kubectl exec -it $podname -- tail -f /var/log/messages
 
-#. From Firefox browser, open http://app.arcadia.com/ then click *Login* button
+#. From Firefox browser, open http://app.arcadia.com/ page then click *Login* button
 
     .. image:: img/test-a1.png
 
@@ -33,8 +33,10 @@ XSS Attack Test
 
     .. image:: img/test-a2.png
 
-#. *Rejected Request* page displayed in the browser and see the log match the support ID
+#. *Rejected Request* page displayed in the browser
 
     .. image:: img/test-a3.png
+
+    then see the log that match the support ID
 
     .. image:: img/test-a4.png
