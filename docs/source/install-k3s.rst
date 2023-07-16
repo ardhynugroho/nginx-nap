@@ -23,9 +23,7 @@ Make it persistent across restart::
 The *K3s* Install Script
 ----
 
-This script will install *k3s* and then remove default *ingress controller*.
-
-The `k3s.sh` script file::
+This script will install *k3s* and then remove default *ingress controller*.:
 
   #!/bin/bash
   
@@ -74,4 +72,4 @@ You also can check if *traefik* service no longer listed::
   kube-dns         ClusterIP   10.43.0.10      <none>        53/UDP,53/TCP,9153/TCP   41h
   metrics-server   ClusterIP   10.43.141.175   <none>        443/TCP                  41h
 
-In this point, *k3s* is ready.
+In this point, *k3s* is ready. We will install *NGINX Plus Ingress Controller* in the next step.

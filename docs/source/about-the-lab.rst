@@ -13,6 +13,21 @@ Topology
   This is where we will deploy *Arcadia Apps* and *NGINX Plus Ingress Controller*.
   The **Arcadia Apps** is micro-services based hence *k3s* cluster need to be installed in this node.
 
+KIC
+  Kubernetes Ingress Controller using *NGINX Plus Ingress Controller* with *App. Protect* enabled
+
+Main
+  The pod of main Arcadia app
+
+Backend
+  The pod of Arcadia app for ``/files`` endpoint
+
+App2
+  The pod of Arcadia app money transfer service
+
+App3
+  The pod of Arcadia app referral service
+
 Your Lab. Deployment
 ----
 
@@ -26,10 +41,9 @@ Reset *ubuntu* User Password
 
 .. warning::
   You need to execute this step.
-  Because default *ubuntu* user password is unknown.
-  Hence we need to reset it.
+  Because default *ubuntu* user password is unknown hence we need to reset it.
 
-Now we will change *ubuntu* user password.
+Now we will change the password for *ubuntu* user.
 In your deployment, from *APP* node select *ACCESS > Web Shell*
 
 .. image:: img/webshell.png
