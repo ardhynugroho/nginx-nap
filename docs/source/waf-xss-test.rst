@@ -1,13 +1,21 @@
 XSS Attack Test
 ====
 
-#. Login to *APP* node and deploy ``vs-2.yaml``
+#. Open a terminal emulator and login to *APP* node 
+
+#. In *APP* node
+
+    .. code-block::
+        
+        $ cd /home/ubuntu/arcadia
+        
+    and then deploy ``vs-2.yaml`` file
 
     .. code-block::
 
       $ kubectl apply -f vs-2.yaml
 
-#. Open another terminal and do ``ssh app`` then monitor the syslog
+#. Open another terminal emulator and login to *APP* node then monitor the syslog
 
     .. code-block::
 
@@ -15,7 +23,7 @@ XSS Attack Test
 
       $ podname=`kubectl get pods | awk '/^syslog/{print $1}'`; kubectl exec -it $podname -- tail -f /var/log/messages
 
-#. Back to Firefox browser, open http://app.arcadia.com/ then click *Login* button
+#. From Firefox browser, open http://app.arcadia.com/ then click *Login* button
 
     .. image:: img/test-a1.png
 
