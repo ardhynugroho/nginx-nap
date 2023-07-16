@@ -289,8 +289,7 @@ You should see the app is running.
 Publish the Arcadia App Using *NGINX Plus Ingress Controller*
 ----
 
-.. warning::
-  Do this from *APP* node
+Now you should in *APP* node.
 
 From ``/home/ubuntu/arcadia`` directory, there is ``vs-1.yaml`` manifest file with below content::
 
@@ -319,9 +318,7 @@ Now apply ``vs-1.yaml`` manifest::
 
   $ kubectl apply -f vs-1.yaml
 
-.. warning::
-  Go back to *Client* node
-
+Now back to *Client* node.
 Verify the Arcadia App by open ``http://app.arcadia.com/`` in the Firefox web browser. 
 Notice we ommited port 30511 in the URL, so the request will hit port 80.
 

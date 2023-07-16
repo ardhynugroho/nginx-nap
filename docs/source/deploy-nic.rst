@@ -16,8 +16,6 @@ To obtain required files, log in to MyF5 Customer Portal and download your trial
 Downloade the SSL certificate & private key and save it in *APP* node as
 ``nginx-repo.crt`` and ``nginx-repo.key`` file inside ``/home/ubuntu/setup`` directory.
 
-.. warning::
-  Make sure you're login to *APP* node.
 
 Deployment Script
 ----
@@ -36,7 +34,7 @@ The script summarize following install steps:
 
 #. Deploy the ingress controller & create the service
 
-Take a look at the ``nic.sh`` deployment script below::
+The ``nic.sh`` deployment script::
 
   #!/bin/bash
   #
@@ -94,7 +92,7 @@ Take a look at the ``nic.sh`` deployment script below::
     echo "Required nginx-repo.crt and/or nginx-repo.key files not found"
   fi
 
-Now, let's execute the script, but make sure you're in ``/home/ubuntu/setup``::
+Now, let's execute the script, but make sure you're in *APP* node under ``/home/ubuntu/setup`` working directory::
 
   $ bash nic.sh
 
