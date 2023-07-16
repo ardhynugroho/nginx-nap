@@ -1,9 +1,9 @@
-Enable App Protect For The Arcadia App
+Configure App Protect Policy
 ====
 
 .. warning:: Back to *APP* node
   
-The Policy CRD
+Policy CRD
 ----
 
 The Policy resource allows you to configure features like access control and rate-limiting, 
@@ -31,7 +31,7 @@ You can configure multiple *APLogConfs* with log destinations:
         apLogConf: "default/logconf"
         logDest: "syslog:server=syslog-svc.default:514"
 
-NGINX App Protect Policy CRD
+App Protect Policy CRD
 ----
 
 You can define NGINX App Protect WAF policies for your *VirtualServer*, *VirtualServerRoute*
@@ -74,7 +74,7 @@ The ``ap-dataguard-alarm-policy.yaml`` example file::
       template:
         name: POLICY_TEMPLATE_NGINX_BASE
 
-User Defined App Protect Signature CRD
+User Defined Signature
 ----
 
 You can define NGINX App Protect WAF User-Defined Signatures 
@@ -85,6 +85,8 @@ then the request must be blocked.
 
 This definition referenced in *APPolicy* CRD.
 
+::
+  
   apiVersion: appprotect.f5.com/v1beta1
   kind: APUserSig
   metadata:
@@ -104,7 +106,7 @@ This definition referenced in *APPolicy* CRD.
       - name: Unix/Linux
     tag: Fruits
 
-Syslog and Logconf Definition
+Logging Resource Definition
 ----
 
 *syslog* deployment example::
