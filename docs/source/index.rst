@@ -1,5 +1,5 @@
 .. toctree::
-    lab-setup
+    about-the-lab
     install-k3s
     install-docker
     deploy-local-registry
