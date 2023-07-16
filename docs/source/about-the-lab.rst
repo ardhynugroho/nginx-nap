@@ -89,8 +89,16 @@ then remove ``known_hosts`` file::
 
     $ rm /home/ubuntu/.ssh/known_hosts
 
-Now access to *APP* node and use "*ubuntu*" as password when prompted::
+Now access to *APP* node::
 
     $ ssh app
+    The authenticity of host 'app (10.1.1.4)' can't be established.
+    ECDSA key fingerprint is SHA256:166PrdLUQB+VQ1tImslAFNkBRsxz1vHEdOLmDWWnXTk.
+    Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+
+Type "yes" to accept, then type "*ubuntu*" as password when prompted::
+  
+    Warning: Permanently added 'app,10.1.1.4' (ECDSA) to the list of known hosts.
+    ubuntu@app's password:
 
 Now you should be able to login to *APP* node as *ubuntu* user from *Client* node.
