@@ -4,12 +4,9 @@ Docker Installation
 We will use *Docker* to install *NGINX Plus Ingress Controller* in the next step.
 
 .. note::
-  This already installed for lab. hands-on session, you don't need to do anything.
+  This already installed in your lab deployment.
 
-.. warning::
-  Make sure you're login to *APP* node.
-
-Change directory to ``setup``::
+Make sure you're login to *APP* node then change directory to ``setup``::
   
   $ cd /home/ubuntu/setup
 

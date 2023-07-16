@@ -2,7 +2,7 @@ Deploy Nginx Plus Ingress Controller
 ====
 
 .. note::
-  This already installed for lab. hands-on session, you don't need to do anything.
+  This already installed in your lab deployment.
   
 About NGINX Private Registry Access
 ----

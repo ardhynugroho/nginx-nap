@@ -6,12 +6,9 @@ K3s come with *traefik* ingress controller.
 But it will be replaced with *NGINX Plus Ingress Controller* in the next step.
 
 .. note::
-  This already installed for lab. hands-on session, you don't need to do anything.
+  This already installed in your lab deployment.
 
-.. warning::
-  Make sure you're login to *APP* node.
-
-Change install target hostname to `app`::
+Make sure you're login to *APP* node then change install target hostname to `app`::
 
   $ sudo bash
   # hostname app

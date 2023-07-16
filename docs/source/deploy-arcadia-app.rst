@@ -27,7 +27,7 @@ Deploy The Apps In Kubernetes
 ----
 
 .. note::
-  For the interrest of time, the apps is already deployed, you dont need to do anything here.
+  This is already deployed in your lab. deployment.
   
   You can moving forward to :ref:`verifyArcadia` step.
   
@@ -36,10 +36,7 @@ Deploy The Apps In Kubernetes
     $ kubectl delete -f app.yaml
     $ kubectl delete -f vs-1.yaml
 
-.. warning::
-  You should be login in *APP* node
-
-Enter ``/home/ubuntu/arcadia`` directory::
+Login in *APP* node then enter ``/home/ubuntu/arcadia`` directory::
 
   $ cd /home/ubuntu/arcadia
 
@@ -278,9 +275,6 @@ and *app-3* pods are running and their respective service are defined::
 .. _verifyArcadia:
 Verify the Arcadia apps
 ----
-
-.. warning::
-  Do this from *Client* node
 
 At this point, you should can access the app using exposed NodePort.
 
