@@ -24,7 +24,8 @@ This script will install *k3s* and remove *traefik ingress controller*
 .. note::
   You can change ``app`` inside the ``while`` *loop* to reflect the actual hostname where k3s installed
 
-::
+.. code-block:: bash
+  :linenos:
 
   #!/bin/bash
   
