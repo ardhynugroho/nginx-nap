@@ -1,7 +1,7 @@
-Docker Installation
+Installing Docker
 ====
 
-We will use *Docker* to install *NGINX Plus Ingress Controller* in the next step.
+Docker will be used to pull docker image from *NGINX Plus* private registry and then push it to a local registry.
 
 .. note::
   This already installed in your lab deployment.
@@ -9,17 +9,6 @@ We will use *Docker* to install *NGINX Plus Ingress Controller* in the next step
 Make sure you're login to *APP* node then change directory to ``setup``::
   
   $ cd /home/ubuntu/setup
-
-The *Docker* Install Script
-----
-
-Things executed in this script:
-
-1. Add *docker* apt repository
-
-#. Install *docker* packages for ubuntu
-
-#. Add *ubuntu* user to *docker* group
 
 ::
 
@@ -42,28 +31,4 @@ Let's execute the script::
   
   $ bash docker.sh
 
-Verify The Installation
-----
-
-After package installation finished, let's try to run a *NGINX* container::
-
-  $ docker run --name nginx nginx
-  Unable to find image 'nginx:latest' locally
-  latest: Pulling from library/nginx
-  ...
-  ...
-  [ctl-C]
-
-Press [ctl-C] key to terminate the container.
-
-Show terminated *nginx* container::
-
-  $ docker ps -a
-  CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS                      PORTS     NAMES
-  f0d3a264afdb   nginx     "/docker-entrypoint.…"   About a minute ago   Exited (0) 59 seconds ago             nginx
-
-You can remove terminated *nginx* container for cleanup::
-
-  $ docker rm nginx
-
-In this point, *Docker* is ready.
+At this point, *Docker* should be successfully installed & ready to use.

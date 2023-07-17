@@ -1,5 +1,9 @@
-Deploy Nginx Plus Ingress Controller
+Deploying Nginx Plus Ingress Controller
 ====
+
+NGINX Ingress Controller with App. Protect support will used as ingress controller in our k3s environment.
+
+You need a local registry setup and running.
 
 .. note::
   This already installed in your lab deployment.
@@ -34,7 +38,7 @@ The script summarize following install steps:
 
 #. Deploy the ingress controller & create the service
 
-The ``nic.sh`` deployment script::
+The``nic.sh`` deployment script::
 
   #!/bin/bash
   #
@@ -92,7 +96,7 @@ The ``nic.sh`` deployment script::
     echo "Required nginx-repo.crt and/or nginx-repo.key files not found"
   fi
 
-Now, let's execute the script, but make sure you're in *APP* node under ``/home/ubuntu/setup`` working directory::
+Now, let's execute the script, but make sure you're in *APP* node and on ``/home/ubuntu/setup`` working directory::
 
   $ bash nic.sh
 
@@ -113,4 +117,4 @@ After script execution finished, let's verify the deployment::
 
 As you can see, the pod is running, service & daemonset are defined.
 
-At this point, the *Ingress Controller* is ready.
+At this point, the *ingress controller* is ready to use.

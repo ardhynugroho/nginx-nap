@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'nap-in-kic'
+project = 'NGINX App Protect in K8s'
 author = 'Ardhy Nugroho'
 
 release = '0.1'

@@ -1,12 +1,11 @@
-Kubernetes Cluster Installation
+Installing Kubernetes Platform
 ====
 
-K3s will be used in this lab. to run Arcadia app micro-services.
-K3s come with *traefik* ingress controller. 
-But it will be replaced with *NGINX Plus Ingress Controller* in the next step.
+This lab uses k3s as kubernetes platform. It come with *traefik* as ingress controller.
+In this guide, *traefik* will be replaced with *NGINX Plus Ingress Controller with App. Protect*.
 
 .. note::
-  This already installed in your lab deployment.
+  This already available in your lab deployment.
 
 Make sure you're login to *APP* node then change install target hostname to `app`::
 
@@ -20,7 +19,12 @@ Make it persistent across restart::
 The *K3s* Install Script
 ----
 
-This script will install *k3s* and then remove default *ingress controller*::
+This script will install *k3s* and remove *traefik ingress controller*::
+
+.. note::
+  You can change ``app`` inside the ``while`` *loop* to reflect the actual hostname where k3s installed
+
+::
 
   #!/bin/bash
   
@@ -69,4 +73,4 @@ You also can check if *traefik* service no longer listed::
   kube-dns         ClusterIP   10.43.0.10      <none>        53/UDP,53/TCP,9153/TCP   41h
   metrics-server   ClusterIP   10.43.141.175   <none>        443/TCP                  41h
 
-In this point, *k3s* is ready. We will install *NGINX Plus Ingress Controller* in the next step.
+At this point, *k3s* is ready.

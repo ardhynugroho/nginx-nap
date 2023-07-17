@@ -1,5 +1,7 @@
-Deploy The Arcadia App
+Deploying The Arcadia App
 ====
+
+In this lab. Arcadia App will be used as test application that will be protected by *NGINX App Protect*.
 
 About Aracdia App. Architecture
 ----
@@ -23,15 +25,15 @@ This is what displayed when *main*, *backend*, *money transfer* and *referral* d
 
 .. image:: img/arcadia-main-be-money-friend.png
 
-Deploy The Apps In Kubernetes
+Deploy Arcadia Apps In Kubernetes
 ----
 
 .. note::
-  This is already deployed in your lab. deployment.
+  This already installed in your lab. deployment.
   
   You can moving forward to :ref:`verifyArcadia` step.
   
-  Else you can start over by execute below command under ``/home/ubuntu/arcadia``::
+  Or else you can start over by execute below command under ``/home/ubuntu/arcadia``::
 
     $ kubectl delete -f app.yaml
     $ kubectl delete -f vs-1.yaml
@@ -40,7 +42,7 @@ Login in *APP* node then enter ``/home/ubuntu/arcadia`` directory::
 
   $ cd /home/ubuntu/arcadia
 
-Examine app deployment file ``app.yaml`` below::
+This ``app.yaml`` file define all the required resource to deploy Arcadia App in k3s::
 
   ##################################################################################################
   # FILES - BACKEND
@@ -251,8 +253,10 @@ Let's apply the ``app.yaml`` manifest above::
 
   $ kubectl apply -f app.yaml
 
-Verify the deployment, as you can see there are *main-*, *backend-*, *app2-* 
-and *app-3* pods are running and their respective service are defined::
+Verify Arcadia Apps Deployment
+----
+
+::
 
   $ kubectl get pods,svc
   NAME                           READY   STATUS    RESTARTS        AGE
@@ -272,6 +276,9 @@ and *app-3* pods are running and their respective service are defined::
   service/app3             NodePort    10.43.61.157    <none>        80:31662/TCP   39h
   service/syslog-svc       ClusterIP   10.43.206.48    <none>        514/TCP        38h
 
+As you can see there are *main-*, *backend-*, *app2-* 
+and *app-3* pods are running and their respective service are defined::
+
 .. _verifyArcadia:
 Verify the Arcadia apps
 ----
@@ -289,9 +296,11 @@ You should see the app is running.
 Publish the Arcadia App Using *NGINX Plus Ingress Controller*
 ----
 
-Now you should in *APP* node.
+Now we will create a *VirtualServer* resource for Arcadia Apps.
 
-From ``/home/ubuntu/arcadia`` directory, there is ``vs-1.yaml`` manifest file with below content::
+Make sure you're in *APP* node.
+
+Look inside ``/home/ubuntu/arcadia`` directory, there is ``vs-1.yaml`` manifest file with below content::
 
   apiVersion: k8s.nginx.org/v1
   kind: VirtualServer
@@ -314,12 +323,13 @@ From ``/home/ubuntu/arcadia`` directory, there is ``vs-1.yaml`` manifest file wi
       action:
         pass: backend
 
-Now apply ``vs-1.yaml`` manifest::
+#. Now apply ``vs-1.yaml`` manifest::
 
-  $ kubectl apply -f vs-1.yaml
+    $ kubectl apply -f vs-1.yaml
 
-Now back to *Client* node.
-Verify the Arcadia App by open ``http://app.arcadia.com/`` in the Firefox web browser. 
-Notice we ommited port 30511 in the URL, so the request will hit port 80.
+#. Now back to *Client* node.
+
+    Verify the Arcadia App by open ``http://app.arcadia.com/`` in the Firefox web browser. 
+    Notice we ommited port 30511 in the URL, so the request will hit port 80.
 
 At this point. The Arcadia app is up and running served by *NGINX Plus Ingress Controller*

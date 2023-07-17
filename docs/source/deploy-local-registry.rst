@@ -1,7 +1,9 @@
-Deploy Docker Local Registry
+Deploying A Local Registry
 ====
 
-A local registry is needed to install *NGINX Plus Ingress Controller* from *k3s*.
+A local registry is needed to pull *NGINX Plus Ingress Controller* image from *k3s*.
+
+Make sure Docker already installed.
 
 .. note::
   This already deployed in your lab deployment.
@@ -100,12 +102,12 @@ Service
       - port: 5000
         targetPort: 5000
 
-Deployment script
+Deployment Script
 ----
 
 Steps executed by this script:
 
-1. Generate TLS certificate and *htpasswd* file
+#. Generate TLS certificate and *htpasswd* file
 
 #. Create secrets for *tls, generic* and *docker-registry*
 
@@ -171,7 +173,7 @@ Steps executed by this script:
   docker login local-registry:5000 -u myuser -p mypasswd
   echo "Local-registry setup, done!"
 
-Make sure you're login *APP* node and change working dorectory to ``/home/ubuntu/setup``,
+Make sure you're in *APP* node then change working directory to ``/home/ubuntu/setup``,
 then run the deployment script::
 
   $ bash local-registry.sh
@@ -179,7 +181,7 @@ then run the deployment script::
 Verify Deployment
 ----
 
-After finished, you can verify the result using below command::
+After install script finished, you can verify the result using below command::
 
   $ kubectl get pods,svc,ep local-registry -o wide
   NAME                 READY   STATUS    RESTARTS        AGE   IP           NODE   NOMINATED NODE   READINESS GATES
@@ -197,4 +199,4 @@ Check if you can login to *local-registry* via *Docker CLI*::
 
   $ docker login local-registry:5000 -u myuser -p mypasswd
 
-In this point, the local registry is deployed inside *k3s*.
+At this point, the local registry is deployed inside *k3s*.
