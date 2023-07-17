@@ -3,25 +3,33 @@ Deploying The Arcadia App
 
 In this lab. Arcadia App will be used as test application that will be protected by *NGINX App Protect*.
 
-About Aracdia App. Architecture
+About Arcadia App. Architecture
 ----
 
 .. note:: 
   This application is available in `Arcadia App GitLab repository <https://gitlab.com/arcadia-application>`_
 
-This is the architecture of Arcadia apps. It has 4 micro-services and they're routed using URI.
+This is the architecture of Arcadia apps. It has 4 micro-services:
+
+#. Main App
+
+#. Backend
+
+#. Money transfer
+
+#. Refer friend
 
 .. image:: img/arcadia-arch.png
 
-This is what displayed when only *main* and *backend* app deployed.
+This is what displayed when only *main* and *backend* services are deployed.
 
 .. image:: img/arcadia-main-be.png
 
-This is what displayed when *main*, *backend* and *money transfer* deployed.
+This is what displayed when *main*, *backend* and *money transfer* services deployed.
 
 .. image:: img/arcadia-main-be-money.png
 
-This is what displayed when *main*, *backend*, *money transfer* and *referral* deployed.
+This is what displayed when *main*, *backend*, *money transfer* and *referral* services deployed.
 
 .. image:: img/arcadia-main-be-money-friend.png
 
@@ -38,7 +46,7 @@ Deploy Arcadia Apps In Kubernetes
     $ kubectl delete -f app.yaml
     $ kubectl delete -f vs-1.yaml
 
-Login in *APP* node then enter ``/home/ubuntu/arcadia`` directory::
+Login in *APP* node then change dir to ``/home/ubuntu/arcadia`` directory::
 
   $ cd /home/ubuntu/arcadia
 
@@ -277,7 +285,7 @@ Verify Arcadia Apps Deployment
   service/syslog-svc       ClusterIP   10.43.206.48    <none>        514/TCP        38h
 
 As you can see there are *main-*, *backend-*, *app2-* 
-and *app-3* pods are running and their respective service are defined::
+and *app-3* pods are running and their respective service are defined.
 
 .. _verifyArcadia:
 Verify the Arcadia apps
@@ -285,11 +293,9 @@ Verify the Arcadia apps
 
 At this point, you should can access the app using exposed NodePort.
 
-From *Client* node, open Firefox web browser and navigate to::
+From *Client* node, open Firefox web browser and navigate to http://app.arcadia.com:30511/
 
-  http://app.arcadia.com:30511/
-
-You should see the app is running.
+Please notice the port 30511 in the URL, this is Main service NodePort.
 
 .. image:: img/arcadia-nodeport.png
 
@@ -330,6 +336,6 @@ Look inside ``/home/ubuntu/arcadia`` directory, there is ``vs-1.yaml`` manifest 
 #. Now back to *Client* node.
 
     Verify the Arcadia App by open ``http://app.arcadia.com/`` in the Firefox web browser. 
-    Notice we ommited port 30511 in the URL, so the request will hit port 80.
+    Notice we ommited port 30511 in the URL, so the request served over NGINX Ingress Controller.
 
 At this point. The Arcadia app is up and running served by *NGINX Plus Ingress Controller*

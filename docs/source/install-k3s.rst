@@ -1,4 +1,4 @@
-Installing Kubernetes Platform
+Installing K3s Kubernetes Platform
 ====
 
 This lab uses k3s as kubernetes platform. It come with *traefik* as ingress controller.
