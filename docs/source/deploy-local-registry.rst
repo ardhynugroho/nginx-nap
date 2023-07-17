@@ -22,7 +22,10 @@ The *local-registry* pod
 Service
   To publish the *local-registry* service.
 
-``/home/ubuntu/setup/local-registry.yaml`` manifest file::
+``/home/ubuntu/setup/local-registry.yaml`` manifest file
+
+.. code-block:: yaml
+  :linenos:
 
   apiVersion: v1
   kind: PersistentVolume
@@ -117,7 +120,10 @@ Steps executed by this script:
 
 #. Setup K3s to use the *local-registry*
 
-``/home/ubuntu/setup/local-registry.sh`` script file::
+``/home/ubuntu/setup/local-registry.sh`` script file
+
+.. code-block:: bash
+  :linenos:
 
   #!/bin/bash
   #

@@ -50,7 +50,10 @@ Login in *APP* node then change dir to ``/home/ubuntu/arcadia`` directory::
 
   $ cd /home/ubuntu/arcadia
 
-This ``app.yaml`` file define all the required resource to deploy Arcadia App in k3s::
+This ``app.yaml`` file define all the required resource to deploy Arcadia App in k3s
+
+.. code-block:: yaml
+  :linenos:
 
   ##################################################################################################
   # FILES - BACKEND
@@ -306,7 +309,10 @@ Now we will create a *VirtualServer* resource for Arcadia Apps.
 
 Make sure you're in *APP* node.
 
-Look inside ``/home/ubuntu/arcadia`` directory, there is ``vs-1.yaml`` manifest file with below content::
+Look inside ``/home/ubuntu/arcadia`` directory, there is ``vs-1.yaml`` manifest file with below content
+
+.. code-block:: yaml
+  :linenos:
 
   apiVersion: k8s.nginx.org/v1
   kind: VirtualServer

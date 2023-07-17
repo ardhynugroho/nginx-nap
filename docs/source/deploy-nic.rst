@@ -38,7 +38,10 @@ The script summarize following install steps:
 
 #. Deploy the ingress controller & create the service
 
-``/home/ubuntu/setup/nic.sh`` deployment script::
+``/home/ubuntu/setup/nic.sh`` deployment script
+
+.. code-block:: bash
+  :linenos:
 
   #!/bin/bash
   #

@@ -10,8 +10,9 @@ Make sure you're login to *APP* node then change directory to ``setup``::
   
   $ cd /home/ubuntu/setup
 
-::
-
+.. code-block:: bash
+  :linenos:
+  
   #!/bin/bash
   set -x
   sudo apt-get update

@@ -22,7 +22,10 @@ For example, the following policy will enable the referenced
 
 * and APLogConf = *default/logconf*
 
-``waf.yaml`` file::
+``waf.yaml`` file
+
+.. code-block:: yaml
+  :linenos:
 
   apiVersion: k8s.nginx.org/v1
   kind: Policy
@@ -93,7 +96,10 @@ then the request must be blocked.
 
 This definition referenced in *APPolicy* CRD.
 
-``ap-jeruk-uds.yaml`` file::
+``ap-jeruk-uds.yaml`` file
+
+.. code-block:: yaml
+  :linenos:
 
   apiVersion: appprotect.f5.com/v1beta1
   kind: APUserSig
@@ -117,7 +123,10 @@ This definition referenced in *APPolicy* CRD.
 Logging Resource Definition
 ----
 
-``syslog.yaml`` file::
+``syslog.yaml`` file
+
+.. code-block:: yaml
+  :linenos:
 
   apiVersion: apps/v1
   kind: Deployment
@@ -152,7 +161,10 @@ Logging Resource Definition
     selector:
       app: syslog
 
-``ap-logconf.yaml`` file::
+``ap-logconf.yaml`` file
+
+.. code-block:: yaml
+  :linenos:
 
   apiVersion: appprotect.f5.com/v1beta1
   kind: APLogConf
