@@ -46,7 +46,10 @@ App Protect Policy (APPolicy)
 You can define NGINX App Protect WAF policies for your *VirtualServer*, *VirtualServerRoute*
 by creating an *APPolicy* Custom Resource.
 
-``ap-dataguard-alarm-policy.yaml`` file::
+``ap-dataguard-alarm-policy.yaml`` file
+
+.. code-block:: yaml
+  :linenos:
 
   apiVersion: appprotect.f5.com/v1beta1
   kind: APPolicy
