@@ -42,7 +42,6 @@ Now we try to use Firefox with modified user-agent.
     
 #. Create request to the Arcadia Apps http://app.arcadia.com
 
-#. You can see the request is blocked and REJECTED and classified as *Malicious Bot*. 
-    You also can see *bot_anomalies* as *Search Engine Verification Failed*.
+#. You can see the request is blocked and REJECTED and classified as *Malicious Bot*. You also can see *bot_anomalies* as *Search Engine Verification Failed*.
 
     .. image:: img/bot-c3.png

@@ -80,6 +80,8 @@ by creating an *APPolicy* Custom Resource.
       template:
         name: POLICY_TEMPLATE_NGINX_BASE
 
+.. _uds:
+
 User Defined Signature
 ----
 
