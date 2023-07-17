@@ -28,7 +28,7 @@ The script summarize following install steps:
 
 1. Pull images from NGINX private repo and push them to our *local-registry*
 
-#. Clone *kubernetes-ingress* from `*NGINX* Git repository <https://github.com/nginxinc/kubernetes-ingress.git>`_
+#. Clone *kubernetes-ingress* from `NGINX Git repository <https://github.com/nginxinc/kubernetes-ingress.git>`_
 
 #. Deploy the manifests (namespace, service account, RBAC, CRDs)
 
@@ -38,7 +38,7 @@ The script summarize following install steps:
 
 #. Deploy the ingress controller & create the service
 
-The``nic.sh`` deployment script::
+``/home/ubuntu/setup/nic.sh`` deployment script::
 
   #!/bin/bash
   #

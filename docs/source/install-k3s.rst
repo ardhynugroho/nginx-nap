@@ -19,7 +19,7 @@ Make it persistent across restart::
 The *K3s* Install Script
 ----
 
-This script will install *k3s* and remove *traefik ingress controller*::
+This script will install *k3s* and remove *traefik ingress controller*
 
 .. note::
   You can change ``app`` inside the ``while`` *loop* to reflect the actual hostname where k3s installed

@@ -1,9 +1,12 @@
-Configure App Protect Policy
+Creating App Protect Policy
 ====
 
 .. comment https://docs.nginx.com/nginx-ingress-controller/configuration/policy-resource/
 
-NGINX App Protect base policy provide OWASP Top 10 & Bot protection.
+NGINX App Protect default policy covers all the OWASP top 10 attack patterns 
+enabling signature sets and BOT security protection out of the box.
+
+See more: https://docs.nginx.com/nginx-app-protect-waf/configuration-guide/configuration/
 
 Policy Resource
 ----
@@ -19,7 +22,7 @@ For example, the following policy will enable the referenced
 
 * and APLogConf = *default/logconf*
 
-``waf.yaml``::
+``waf.yaml`` file::
 
   apiVersion: k8s.nginx.org/v1
   kind: Policy

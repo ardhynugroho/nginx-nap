@@ -1,4 +1,4 @@
-Deploying A Local Registry
+Deploying Local Image Registry
 ====
 
 A local registry is needed to pull *NGINX Plus Ingress Controller* image from *k3s*.
@@ -11,7 +11,7 @@ Make sure Docker already installed.
 Deployment Manifest
 ----
 
-Definitions in the manifest:
+Resource defined in the manifest:
 
 Persistent volume & claim
   Required to store downloaded *Docker* images, it needs to be persistent.
