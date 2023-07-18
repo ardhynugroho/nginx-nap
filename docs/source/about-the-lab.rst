@@ -112,4 +112,4 @@ Now you should be able to login to *APP* node as *ubuntu* user from *Client* nod
 Files
 ----
 
-All files in this lab guide accessible from `Github repo <https://github.com/ardhynugroho/nginx-nap/files/>`_
+All files in this lab guide accessible from `Github repo <https://github.com/ardhynugroho/nginx-nap/>`_
