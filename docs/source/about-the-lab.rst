@@ -4,6 +4,9 @@ About The Lab
 This guide covers NGINX Plus with App. Protect deployment as Kubernetes Ingress Controller, 
 configure security policy & testing. Arcadia app is used as test application.
 
+.. note::
+  All files in this lab guide are available in `Github repo <https://github.com/ardhynugroho/nginx-nap/>`_
+
 Topology
 ----
 
@@ -108,8 +111,3 @@ Type "yes" to accept, then type "*ubuntu*" as password when prompted::
     ubuntu@app's password:
 
 Now you should be able to login to *APP* node as *ubuntu* user from *Client* node.
-
-Files
-----
-
-All files in this lab guide accessible from `Github repo <https://github.com/ardhynugroho/nginx-nap/>`_
