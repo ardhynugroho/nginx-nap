@@ -1,0 +1,32 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: vs-arcadia
+spec:
+  host: app.arcadia.com
+  upstreams:
+  - name: main
+    service: main
+    port: 80
+  - name: backend
+    service: backend
+    port: 80
+  - name: moneytransfer
+    service: app2
+    port: 80
+  - name: referral
+    service: app3
+    port: 80
+  routes:
+  - path: /
+    action:
+      pass: main
+  - path: /files
+    action:
+      pass: backend
+  - path: /api
+    action:
+      pass: moneytransfer
+  - path: /app3
+    action:
+      pass: referral

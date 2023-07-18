@@ -108,3 +108,8 @@ Type "yes" to accept, then type "*ubuntu*" as password when prompted::
     ubuntu@app's password:
 
 Now you should be able to login to *APP* node as *ubuntu* user from *Client* node.
+
+Files
+----
+
+All files in this lab guide accessible from `Github repo <https://github.com/ardhynugroho/nginx-nap/files/>`_
