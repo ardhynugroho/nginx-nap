@@ -1,11 +1,13 @@
 #!/bin/bash
 
+host_name=`hostname`
+
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--write-kubeconfig-mode 644" sh -s -
 
 # wait until ready
 while true;
 do
-    if [ "$(kubectl get nodes app -o=jsonpath='{.status.conditions[3].status}')" == "True" ]; then
+    if [ "$(kubectl get nodes $host_name -o=jsonpath='{.status.conditions[3].status}')" == "True" ]; then
       break;
     fi
     sleep 5;
